@@ -30,6 +30,13 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.SocketAddress;
+
 /**
  * Echoes back any received data from a client.
  */
@@ -69,7 +76,6 @@ public final class EchoServer {
                      p.addLast(serverHandler);
                  }
              });
-
             // Start the server.
             ChannelFuture f = b.bind(PORT).sync();
 
@@ -80,5 +86,12 @@ public final class EchoServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
+    }
+
+
+    public void test () throws IOException {
+        ServerSocket serverSocket = new ServerSocket();
+        serverSocket.bind();
+        serverSocket.
     }
 }
